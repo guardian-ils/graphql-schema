@@ -1,5 +1,6 @@
 {
   "name": "guardian-schema",
+  "version": "0.0.1",
   "license": "MIT",
   "repository": "git+https://github.com/guardian-ils/graphql-schema.git",
   "dependencies": {}
