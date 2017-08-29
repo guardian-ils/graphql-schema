@@ -1,0 +1,97 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Query {
+    ping: String!
+}
+
+type Mutation {
+    ping: String!
+}
+
+scalar ID
+scalar DateTime
+
+type Preference {
+    id: ID!
+    name: String!
+    value: String!
+    type: String!
+    description: String
+}
+
+type Branch {
+    id: ID!
+    name: String!
+    description: String
+}
+
+interface User {
+    id: ID!
+    cardNumber: String
+    username: String!
+    name: String!
+    branch: Branch!
+}
+
+type Patron implements User {
+    id: ID!
+    cardNumber: String
+    username: String!
+    name: String!
+    branch: Branch!
+}
+
+type Staff implements User {
+    id: ID!
+    cardNumber: String
+    username: String!
+    name: String!
+    branch: Branch!
+}
+
+type Bibliography {
+    id: ID!
+    title: String!
+    author: String
+    callNumber: String!
+    copyright: String!
+    marc: String!
+}
+
+type ItemType {
+    id: ID!
+    name: String!
+    description: String
+}
+
+type Collection {
+    id: ID!
+    name: String!
+    loanable: Boolean!
+    description: String
+}
+
+type Item {
+    id: ID!
+    bibliography: Bibliography!
+    itemType: ItemType!
+    collection: Collection!
+    volume: String
+    copy: String
+    price: Float
+    totalIssue: Int!
+}
+
+type Issue {
+    id: ID!
+    borrower: Patron!
+    item: Item!
+    issueDate: DateTime!
+    dateDue: DateTime!
+    returnDate: DateTime
+    branch: Branch!
+    renewal: Int!
+}

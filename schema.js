@@ -1,0 +1,1 @@
+exports.typeDefs = require('./typeDefs');
